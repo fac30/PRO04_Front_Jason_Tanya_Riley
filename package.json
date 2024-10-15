@@ -1,0 +1,22 @@
+{
+  "name": "craft-graft-front",
+  "version": "0.0.1",
+  "description": "Frontend for Craft & Graft Ecommerce store",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fac30/PRO04_Front_Jason_Tanya_Riley.git"
+  },
+  "keywords": [
+    "ecommerce"
+  ],
+  "author": "Jason Warren, Riley O'Dwyer, Tatiana Gurova",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fac30/PRO04_Front_Jason_Tanya_Riley/issues"
+  },
+  "homepage": "https://github.com/fac30/PRO04_Front_Jason_Tanya_Riley#readme"
+}
