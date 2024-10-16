@@ -1,12 +1,19 @@
 import React from 'react'
+import Content from './components/layout/Content'
+import Footer from './components/layout/Footer'
+import Header from './components/layout/Header'
+import { StoreProvider } from './context/Store'
 
 function App() {
   return (
-    <div>
-      <h1>Welcome to Craft & Graft</h1>
-    </div>
+    <StoreProvider>
+      <Header />
+			<hr />
+			<Content />
+			<hr />
+			<Footer />
+    </StoreProvider>
   )
 }
 
 export default App
-
