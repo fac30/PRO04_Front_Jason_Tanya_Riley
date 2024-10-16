@@ -6,8 +6,13 @@ export default {
   ],
   theme: {
     extend: {
+			container: {
+				center: true,
+				padding: '1rem',
+			},
       colors: {
         primary: {
+          'A': '#c2e9ad',
           0: '#a0da81',
           1: '#84b26b',
           2: '#688c55',
@@ -16,6 +21,7 @@ export default {
           5: '#1e251a',
         },
         accent: {
+          'A': '#b0e1e9',
           0: '#81cdda',
           1: '#6ba8b2',
           2: '#56848b',
@@ -58,6 +64,7 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/typography')
+	],
 }
-

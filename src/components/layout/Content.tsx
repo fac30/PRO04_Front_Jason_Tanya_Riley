@@ -4,7 +4,6 @@ import { LandingView } from '../view/Landing';
 import { SearchView } from '../view/Search';
 import { ProductView } from '../view/Product';
 
-// Mock data for products
 const products = [
   { id: 1, name: 'Paint Brush Set', price: 19.99, category: 'Art Supplies' },
   { id: 2, name: 'Model Train Kit', price: 89.99, category: 'Model Building' },
@@ -21,11 +20,13 @@ function Content() {
   );
 
   return (
-    <div className="min-h-screen bg-gray-100 p-4">
-      {view === 'landing' && <LandingView />}
-      {view === 'search' && <SearchView products={filteredProducts} />}
-      {view === 'product' && <ProductView product={selectedProduct} />}
-    </div>
+    <main className="flex flex-col w-full h-full">
+      <div className='container mx-auto px-4 py-8 flex-1 bg-primary-A'>
+        {view === 'landing' && <LandingView />}
+        {view === 'search' && <SearchView products={filteredProducts} />}
+        {view === 'product' && <ProductView product={selectedProduct} />}
+      </div>
+    </main>
   );
 }
 
