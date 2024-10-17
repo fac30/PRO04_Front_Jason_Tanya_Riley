@@ -1,23 +1,51 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { StoreContext } from '../../context/Store';
 import { LandingView } from '../view/Landing';
 import { SearchView } from '../view/Search';
 import { ProductView } from '../view/Product';
 
-const products = [
-  { id: 1, name: 'Paint Brush Set', price: 19.99, category: 'Art Supplies' },
-  { id: 2, name: 'Model Train Kit', price: 89.99, category: 'Model Building' },
-  { id: 3, name: 'Gardening Tools Set', price: 34.99, category: 'Gardening' },
-  { id: 4, name: 'Chess Board', price: 29.99, category: 'Board Games' },
-  { id: 5, name: 'Yarn Collection', price: 24.99, category: 'Knitting' },
-];
+interface Product {
+  id: number;
+  name: string;
+  price: number;
+  category: string;
+}
 
 function Content() {
   const { view, selectedProduct, searchTerm } = useContext(StoreContext);
+  const [products, setProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect( () => {fetchProducts()}, [] );
+
+  const fetchProducts = async () => {
+    try {
+      setLoading(true);
+      const response = await fetch('http://localhost:3000/products');
+      if (!response.ok) {
+        throw new Error('Failed to fetch products');
+      }
+      const data = await response.json();
+      setProducts(data);
+      setLoading(false);
+    } catch (err) {
+      setError('Failed to load products. Please try again later.');
+      setLoading(false);
+    }
+  };
 
   const filteredProducts = products.filter(product =>
     product.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>{error}</div>;
+  }
 
   return (
     <main className="flex flex-col w-full h-full">
