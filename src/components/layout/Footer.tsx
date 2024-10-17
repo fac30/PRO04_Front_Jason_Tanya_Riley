@@ -2,9 +2,12 @@ import React from 'react'
 
 function Footer() {
   return (
-    <footer>
-			<pre>↓ ↓ Footer Component ↓ ↓</pre>
-      <p><sup>Don't steal our shitSubComponent</sup></p>
+    <footer className='bg-primary-2 w-full'>
+      <div className='container mx-auto px-4 py-4'>
+        <p className='text-primary-0 text-left'>
+          Don't steal our shit
+        </p>
+      </div>
     </footer>
   )
 }

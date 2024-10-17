@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.button-bonbon {
+	@apply w-full px-6 py-2 rounded-full text-lg transition-colors bg-primary-0 text-primary-4 border border-primary-1;
+}

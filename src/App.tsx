@@ -7,11 +7,13 @@ import { StoreProvider } from './context/Store';
 function App() {
   return (
     <StoreProvider>
-      <Header />
-			<hr />
-			<Content />
-			<hr />
-			<Footer />
+			<div className='flex flex-col h-screen'>
+				<Header />
+				<div className='flex-1 overflow-auto'>
+					<Content />
+				</div>
+				<Footer />
+			</div>
     </StoreProvider>
   )
 }
