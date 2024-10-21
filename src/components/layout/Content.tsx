@@ -9,15 +9,20 @@ interface Product {
   name: string;
   price: number;
   category: string;
+  activity: string;
+  strapline: string;
+  description: string;
 }
 
 function Content() {
-  const { view, selectedProduct, searchTerm } = useContext(StoreContext);
+  const { view, searchTerm } = useContext(StoreContext);
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  useEffect( () => {fetchProducts()}, [] );
+  useEffect(() => {
+    fetchProducts();
+  }, []);
 
   const fetchProducts = async () => {
     try {
@@ -52,7 +57,7 @@ function Content() {
       <div className='container mx-auto px-4 py-8 flex-1 bg-primary-A'>
         {view === 'landing' && <LandingView />}
         {view === 'search' && <SearchView products={filteredProducts} />}
-        {view === 'product' && <ProductView product={selectedProduct} />}
+        {view === 'product' && <ProductView />}
       </div>
     </main>
   );
