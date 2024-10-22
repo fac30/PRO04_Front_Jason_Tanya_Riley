@@ -1,8 +1,10 @@
 import React, { useContext } from 'react'
 import { StoreContext } from '../../context/Store'
-import { ShoppingBag } from 'lucide-react'
+import { useUser } from '../../context/User'
+import { LogIn, LogOut, ShoppingBag } from 'lucide-react'
 
 function Header() {
+	const { isLoggedIn, setIsLoggedIn } = useUser();
   const { setView } = useContext(StoreContext)
 
   return (
