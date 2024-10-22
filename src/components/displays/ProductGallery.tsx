@@ -1,18 +1,24 @@
 import React, { useContext } from 'react';
-import { Search, ShoppingBag, ArrowLeft } from 'lucide-react';
+import { ShoppingBag } from 'lucide-react';
 import { StoreContext } from '../../context/Store';
+import { activity } from '../../dummy/activities';
 
 interface Product {
   id: number;
   name: string;
-  price: number;
-  category: string;
-  activity: string;
+	photo_link: string;
   strapline: string;
+  description: string;
+	stock_level: number;
+	location: number;
+	orders: number;
+	reviews: number | null;
+  activities: number;
+  price?: number;
 }
 
 export function ProductGallery({ products }: { products: Product[] }) {
-  const { setView, fetchProductById, setSearchTerm } = useContext(StoreContext);
+  const { setView, fetchProductById } = useContext(StoreContext);
 
   const handleProductClick = async (productId: number) => {
     await fetchProductById(productId);
@@ -31,10 +37,36 @@ export function ProductGallery({ products }: { products: Product[] }) {
 						</div>
 						
 						<div>
-							<p className="font-semibold">{product.name} - {product.activity}</p>
-							<p className="text-sm text-gray-600">{product.strapline}</p>
-							<p className="mt-2 font-bold">${product.price?.toFixed(2) || 'N/A'}</p>
+							<div>
+								<p className="font-semibold text-center">
+									{product.name}
+								</p>
+							</div>
+
+							<hr />
+
+							<div>
+								<p className="text-sm text-gray-600 text-center">
+									{product.strapline}
+								</p>
+							</div>
+							
+							<hr />
+
+							<div className='flex justify-between'>
+								<p className="text-sm italic text-gray-600">
+									{activity(product.activities)}
+								</p>
+
+								<p className="text-sm text-gray-600">
+									{product.reviews === null ? "No Reviews" : "Error"}
+								</p>
+							</div>
 						</div>
+
+						<p className="mt-2 font-bold">
+							£{product.price?.toFixed(2) || '9.99'}
+						</p>
 					</div>
 				))
 			) : (

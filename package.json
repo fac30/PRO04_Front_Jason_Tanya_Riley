@@ -8,7 +8,9 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "start:dev": "nodemon --exec tsx src/main.tsx"
+    "start:dev": "nodemon --exec tsx src/main.tsx",
+    "try:product": "node scratch/call/product1.js",
+    "try:products": "node scratch/call/productAll.js"
   },
   "dependencies": {
     "lucide-react": "^0.453.0",

@@ -3,11 +3,15 @@ import React, { createContext, useState } from 'react';
 interface Product {
   id: number;
   name: string;
-  price?: number;  // Make price optional
-  category: string;
-  activity: string;
+	photo_link: string;
   strapline: string;
   description: string;
+	stock_level: number;
+	location: number;
+	orders: number;
+	reviews: number | null;
+  activities: number;
+  price?: number;
 }
 
 interface StoreContextType {
