@@ -1,0 +1,12 @@
+{
+  "id": 1,
+  "name": "Football Boots",
+  "photo_link": "https://example.com/football-boots.jpg",
+  "strapline": "Professional-grade football boots",
+  "description": "High-performance footwear designed for serious football players",
+  "stock_level": 100,
+  "location": 1,
+  "orders": 1,
+  "reviews": null,
+  "activities": 1
+}

@@ -16,7 +16,6 @@ function Header() {
           <ShoppingBag className="h-6 w-6" />
         </button>
 
-        {/* <h1 className='text-primary-A text-left text-2xl font-bold'> */}
         <h1 className='text-primary-A text-left text-2xl font-bold text-outline shadow-primary-3'>
           Craft & Graft
         </h1>
