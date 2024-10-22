@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import { useContext, useEffect } from 'react';
 import { ArrowLeft, ShoppingBag } from 'lucide-react';
 import { StoreContext } from '../../context/Store';
 

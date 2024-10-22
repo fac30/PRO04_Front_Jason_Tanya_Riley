@@ -1,18 +1,9 @@
-import React, { useContext } from 'react';
-import { Search, ShoppingBag, ArrowLeft } from 'lucide-react';
+import { useContext } from 'react';
+import { Search, ArrowLeft } from 'lucide-react';
 import { StoreContext } from '../../context/Store';
 
-interface Product {
-  id: number;
-  name: string;
-  price: number;
-  category: string;
-  activity: string;
-  strapline: string;
-}
-
 export function SearchHeader() {
-  const { setView, fetchProductById, setSearchTerm } = useContext(StoreContext);
+  const { setView, setSearchTerm } = useContext(StoreContext);
 
   return (
     <div>
