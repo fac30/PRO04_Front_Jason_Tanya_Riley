@@ -1,5 +1,5 @@
 import { SearchHeader } from './SearchHeader';
-import { ProductGallery } from '../displays/ProductGallery';
+import { ProductGallery } from '../dataDisplays/ProductGallery';
 
 interface Product {
   id: number;

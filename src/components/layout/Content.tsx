@@ -7,22 +7,24 @@ import { ProductView } from '../view/Product';
 interface Product {
   id: number;
   name: string;
-  price: number;
-  category: string;
-  activity: string;
+	photo_link: string;
   strapline: string;
   description: string;
+	stock_level: number;
+	location: number;
+	orders: number;
+	reviews: number | null;
+  activities: number;
+  price?: number;
 }
 
 function Content() {
   const { view, searchTerm } = useContext(StoreContext);
-  const [products, setProducts] = useState<Product[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const [ products, setProducts ] = useState<Product[]>([]);
+  const [ loading, setLoading ] = useState(true);
+  const [ error, setError ] = useState<string | null>(null);
 
-  useEffect(() => {
-    fetchProducts();
-  }, []);
+  useEffect(() => { fetchProducts(); }, []);
 
   const fetchProducts = async () => {
     try {
@@ -53,8 +55,8 @@ function Content() {
   }
 
   return (
-    <main className="flex flex-col w-full h-full">
-      <div className='container mx-auto px-4 py-8 flex-1 bg-primary-A'>
+    <main className="flex flex-col w-full h-full bg-primary-A">
+      <div className='container w-full mx-auto px-4 py-8 flex-1'>
         {view === 'landing' && <LandingView />}
         {view === 'search' && <SearchView products={filteredProducts} />}
         {view === 'product' && <ProductView />}
