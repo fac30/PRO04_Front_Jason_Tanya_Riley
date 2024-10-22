@@ -12,22 +12,23 @@ export default {
 			},
       colors: {
         primary: {
+          'B': '#e2f9bd',
           'A': '#c2e9ad',
-          0: '#a0da81',
-          1: '#84b26b',
-          2: '#688c55',
-          3: '#4e6740',
-          4: '#35442c',
-          5: '#1e251a',
+          '0': '#a0da81',
+          '1': '#84b26b',
+          '2': '#688c55',
+          '3': '#4e6740',
+          '4': '#35442c',
+          '5': '#1e251a',
         },
         accent: {
           'A': '#b0e1e9',
-          0: '#81cdda',
-          1: '#6ba8b2',
-          2: '#56848b',
-          3: '#416167',
-          4: '#2d4144',
-          5: '#1a2325',
+          '0': '#81cdda',
+          '1': '#6ba8b2',
+          '2': '#56848b',
+          '3': '#416167',
+          '4': '#2d4144',
+          '5': '#1a2325',
         },
         danger: {
           0: '#b41c2b',
@@ -62,9 +63,20 @@ export default {
           5: '#000000',
         },
       },
+			textShadow: {
+				'outline': '1px 1px 0 var(--tw-shadow-color), -1px 1px 0 var(--tw-shadow-color), 1px -1px 0 var(--tw-shadow-color), -1px -1px 0 var(--tw-shadow-color)'
+			}
     },
   },
   plugins: [
-    require('@tailwindcss/typography')
-	],
+    require('@tailwindcss/typography'),
+    function ({ addUtilities, theme }) {
+      const newUtilities = {
+        '.text-outline': {
+          textShadow: theme('textShadow.outline'),
+        },
+      }
+      addUtilities(newUtilities, ['responsive', 'hover'])
+    },
+  ],
 }
