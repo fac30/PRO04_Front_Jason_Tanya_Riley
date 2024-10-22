@@ -15,16 +15,18 @@ export function SearchHeader() {
 			</div>
 
 			<div className="flex items-center mb-4">
-				<button onClick={() => setView('landing')} className="mr-2">
+				<button className="mr-2" onClick={
+					() => setView('landing')}
+				>
 					<ArrowLeftIcon className="h-6 w-6" />
 				</button>
 
-				<div className="relative flex-grow">
-					<input type="text" onChange={
+				<div className="relative flex flex-grow items-center">
+					<input type="text" className="flex-grow rounded-md" onChange={
 						(e) => setSearchTerm(e.target.value)
 					}/>
 					
-					<SearchIcon className="absolute right-3 top-2.5 h-5 w-5 text-gray-400" />
+					<SearchIcon className="flex-grow-0 right-3 top-2.5 h-5 w-5 text-gray-400" />
 				</div>
 			</div>
 		</div>
