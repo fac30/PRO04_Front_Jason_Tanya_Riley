@@ -5,3 +5,11 @@
 .button-bonbon {
 	@apply w-full px-6 py-2 rounded-full text-lg transition-colors bg-primary-0 text-primary-4 border border-primary-1;
 }
+
+.product-card {
+	@apply bg-accent-0 p-4 rounded-lg border border-accent-1 shadow-md shadow-accent-4/30 cursor-pointer
+}
+
+.product-card-img {
+	@apply bg-white h-32 mb-2 rounded flex items-center justify-center
+}
