@@ -3,7 +3,7 @@ import LogButtonQuantum from '../quantum/LogButtonQuantum';
 
 function UserButtonBar() {
 	return (
-		<div>
+		<div id="buttonBar">
 			<CartButtonQuantum />
 			<LogButtonQuantum />
 		</div>
