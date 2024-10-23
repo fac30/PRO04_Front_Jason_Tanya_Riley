@@ -2,9 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+/*--- Layout Debug Mode ---*/
+/* div { @apply border-dashed border border-red-500 } */
+
 .button-bonbon {
-	@apply w-full px-6 py-2 rounded-full text-lg transition-colors bg-primary-0 text-primary-4 border border-primary-1;
+	@apply w-full px-6 py-2 rounded-full text-lg transition-colors bg-primary-0 text-primary-4 border border-primary-3;
 }
+
+.say-sit { @apply align-middle }
+.say-stay { @apply justify-center }
+.say-wait { @apply justify-between }
+
+.dog-down { @apply my-auto }
+.dog-sit { @apply m-auto }
+.dog-stay { @apply mx-auto }
 
 .product-card {
 	@apply bg-accent-0 p-4 rounded-lg border border-accent-1 shadow-md shadow-accent-4/30 cursor-pointer

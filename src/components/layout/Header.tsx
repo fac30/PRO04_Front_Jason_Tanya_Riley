@@ -1,26 +1,19 @@
-import React, { useContext } from 'react'
+import { useContext } from 'react'
 import { StoreContext } from '../../context/Store'
 import { useUser } from '../../context/User'
-import { LogIn, LogOut, ShoppingBag } from 'lucide-react'
+import UserButtonBar from '../groups/UserButtonBar'
 
 function Header() {
-	const { isLoggedIn, setIsLoggedIn } = useUser();
-  const { setView } = useContext(StoreContext)
-
   return (
     <header className='bg-primary-2 w-full'>
-      <div className='prose container mx-auto px-4 py-4 flex items-center'>
-        <button 
-          onClick={() => setView('landing')} 
-          className='mr-2 text-primary-A hover:text-primary-0 transition-colors'
-          aria-label="Go to home page"
-        >
-          <ShoppingBag className="h-6 w-6" />
-        </button>
+      <div className='justify-between container mx-auto px-4 py-4 flex items-center'>
+				<div className="prose">
+					<h1 className='text-primary-A text-left text-2xl font-bold text-outline shadow-primary-3'>
+						Craft & Graft
+					</h1>
+				</div>
 
-        <h1 className='text-primary-A text-left text-2xl font-bold text-outline shadow-primary-3'>
-          Craft & Graft
-        </h1>
+				<UserButtonBar />
       </div>
     </header>
   )
