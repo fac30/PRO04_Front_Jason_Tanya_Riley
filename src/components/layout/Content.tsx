@@ -1,8 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { StoreContext } from '../../context/Store';
-import { LandingView } from '../view/Landing';
-import { SearchView } from '../view/Search';
-import { ProductView } from '../view/Product';
+import { LandingView } from '../view/LandingView';
+import { SearchView } from '../view/SearchView';
+import { ProductView } from '../view/ProductView';
+import { LogView } from '../view/LogView';
 
 interface Product {
   id: number;
@@ -60,6 +61,7 @@ function Content() {
         {view === 'landing' && <LandingView />}
         {view === 'search' && <SearchView products={filteredProducts} />}
         {view === 'product' && <ProductView />}
+				{view === 'login' && <LogView /> }
       </div>
     </main>
   );

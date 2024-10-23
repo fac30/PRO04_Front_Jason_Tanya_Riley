@@ -1,4 +1,4 @@
-import { SearchHeader } from './SearchHeader';
+import { SearchHeader } from '../groups/SearchHeaderGroup';
 import { ProductGallery } from '../dataDisplays/ProductGallery';
 
 interface Product {

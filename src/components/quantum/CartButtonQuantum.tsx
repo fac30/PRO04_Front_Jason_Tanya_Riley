@@ -1,7 +1,7 @@
 import { useUser } from '../../context/User';
 import ShoppingBagButton from '../buttons/ShoppingBagButton';
 
-function CartQuantum () {
+function CartButtonQuantum () {
 	const { isLoggedIn } = useUser();
 
   return (
@@ -11,4 +11,4 @@ function CartQuantum () {
 	)
 }
 
-export default CartQuantum
+export default CartButtonQuantum;

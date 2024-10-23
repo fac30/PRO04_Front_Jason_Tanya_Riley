@@ -2,7 +2,7 @@ import { useUser } from '../../context/User'
 import LogInButton from '../buttons/LogInButton';
 import LogOutButton from '../buttons/LogOutButton'
 
-function LogQuantum () {
+function LogButtonQuantum () {
 	const { isLoggedIn } = useUser();
 
   return (
@@ -12,4 +12,4 @@ function LogQuantum () {
 	)
 }
 
-export default LogQuantum
+export default LogButtonQuantum
