@@ -3,7 +3,7 @@ import LogInButton from '../buttons/LogInButton';
 import LogOutButton from '../buttons/LogOutButton'
 
 function LogQuantum () {
-	const { isLoggedIn, setIsLoggedIn } = useUser();
+	const { isLoggedIn } = useUser();
 
   return (
 		<>
