@@ -1,6 +1,5 @@
 import { useUser } from "../../context/User";
 
-
 function LogInForm() {
 	const { setIsLoggedIn } = useUser();
 
@@ -9,3 +8,5 @@ function LogInForm() {
 		/* onClick={() => setIsLoggedIn(true)} */
 	)
 }
+
+export { LogInForm };
