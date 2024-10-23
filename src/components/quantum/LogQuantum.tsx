@@ -1,4 +1,5 @@
 import { useUser } from '../../context/User'
+import LogInButton from '../buttons/LogInButton';
 import LogOutButton from '../buttons/LogOutButton'
 
 function LogQuantum () {
@@ -6,11 +7,7 @@ function LogQuantum () {
 
   return (
 		<>
-			{isLoggedIn ? <LogOutButton /> : (
-				<button className="button-bonbon" onClick={
-					() => setIsLoggedIn(true)}
-				>Login</button>
-			)}
+			{isLoggedIn ? <LogOutButton /> : <LogInButton />}
 		</>
 	)
 }

@@ -1,11 +1,11 @@
 import ShoppingBagButton from '../buttons/ShoppingBagButton';
-import LogOutButton from "../buttons/LogOutButton";
+import LogQuantum from '../quantum/LogQuantum';
 
 function UserButtonBar() {
 	return (
 		<div>
 			<ShoppingBagButton />
-			<LogOutButton />
+			<LogQuantum />
 		</div>
 	)
 }
