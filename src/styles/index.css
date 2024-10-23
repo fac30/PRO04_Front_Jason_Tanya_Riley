@@ -17,6 +17,10 @@
 .dog-sit { @apply m-auto }
 .dog-stay { @apply mx-auto }
 
+.header1 {
+	@apply text-primary-A text-left text-2xl font-bold text-outline shadow-primary-3
+}
+
 .product-card {
 	@apply bg-accent-0 p-4 rounded-lg border border-accent-1 shadow-md shadow-accent-4/30 cursor-pointer
 }

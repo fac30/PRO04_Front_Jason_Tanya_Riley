@@ -5,7 +5,6 @@ import { LogInIcon } from "lucide-react"
 
 function LogInButton() {
 	const { setView } = useContext(StoreContext);
-	const { setIsLoggedIn } = useUser();
 
 	return (
 		<button
