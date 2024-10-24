@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.site-main {
+	@apply flex flex-col w-full h-full bg-primary-A
+}
+
 /*--- Layout Debug Mode ---*/
 /* div { @apply border-dashed border border-red-500 } */
 

@@ -55,9 +55,11 @@ function Content() {
     return <div>{error}</div>;
   }
 
+	{console.log(`Calling return on Content: ${view}`)}
+
   return (
-    <main className="flex flex-col w-full h-full bg-primary-A">
-      <div className='container w-full mx-auto px-4 py-8 flex-1'>
+    <main className="site-main">
+      <div id="view-holder" className='container w-full mx-auto px-4 py-8 flex-1'>
         {view === 'landing' && <LandingView />}
         {view === 'search' && <SearchView products={filteredProducts} />}
         {view === 'product' && <ProductView />}

@@ -7,8 +7,8 @@ function LogInButton() {
 
 	const handleClick = (e: React.MouseEvent) => {
 		e.preventDefault();
-		console.log(`[${new Date().toISOString()}] Current view before click:`, view);
-		console.log(`[${new Date().toISOString()}] Login Button clicked`);
+		console.log(`Current view before click:`, view);
+		console.log(`Login Button clicked`);
 		setView('login');
 	}
 
