@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+input {
+	@apply mx-2 my-1
+}
+
 .site-main {
 	@apply flex flex-col w-full h-full bg-primary-A
 }
@@ -11,6 +15,10 @@
 
 .button-bonbon {
 	@apply w-full px-6 py-2 rounded-full text-lg transition-colors bg-primary-0 text-primary-4 border border-primary-3;
+}
+
+.button-tictac {
+	@apply w-auto mx-auto my-2 px-6 py-2 rounded-full text-lg transition-colors bg-primary-0 text-primary-4 border border-primary-3;
 }
 
 .say-sit { @apply align-middle }
