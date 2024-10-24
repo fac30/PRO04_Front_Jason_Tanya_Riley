@@ -1,4 +1,4 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useEffect, useState } from 'react';
 
 interface Product {
   id: number;
@@ -36,6 +36,16 @@ export const StoreContext = createContext<StoreContextType>({
 
 export const StoreProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [view, setView] = useState('landing');
+	
+	const handleSetView = (newView: string) => {
+		console.log(`[${new Date().toISOString()}] Setting view to:`, newView);
+		setView(newView);
+	};
+
+	useEffect(() => {
+		console.log(`[${new Date().toISOString()}] View changed to:`, view);
+	}, [view]);
+
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
 
@@ -56,7 +66,7 @@ export const StoreProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   return (
     <StoreContext.Provider value={{ 
       view, 
-      setView, 
+      setView: handleSetView, 
       selectedProduct, 
       setSelectedProduct, 
       searchTerm, 

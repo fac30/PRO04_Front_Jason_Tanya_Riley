@@ -2,11 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
+input {
+	@apply mx-2 my-1
+}
+
+.site-main {
+	@apply flex flex-col w-full h-full bg-primary-A
+}
+
 /*--- Layout Debug Mode ---*/
 /* div { @apply border-dashed border border-red-500 } */
 
 .button-bonbon {
 	@apply w-full px-6 py-2 rounded-full text-lg transition-colors bg-primary-0 text-primary-4 border border-primary-3;
+}
+
+.button-tictac {
+	@apply w-auto mx-auto my-2 px-6 py-2 rounded-full text-lg transition-colors bg-primary-0 text-primary-4 border border-primary-3;
 }
 
 .say-sit { @apply align-middle }
@@ -16,6 +28,10 @@
 .dog-down { @apply my-auto }
 .dog-sit { @apply m-auto }
 .dog-stay { @apply mx-auto }
+
+.header1 {
+	@apply text-primary-A text-left text-2xl font-bold text-outline shadow-primary-3
+}
 
 .product-card {
 	@apply bg-accent-0 p-4 rounded-lg border border-accent-1 shadow-md shadow-accent-4/30 cursor-pointer

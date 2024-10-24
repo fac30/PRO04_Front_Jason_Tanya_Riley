@@ -7,7 +7,7 @@ function ShoppingBagButton() {
 
 	return(
 		<button 
-			/* onClick={() => setView('landing')}  */
+			onClick={() => setView('login')}
 			className='mr-2 text-primary-A hover:text-primary-0 transition-colors'
 			aria-label="Go to home page"
 		>
