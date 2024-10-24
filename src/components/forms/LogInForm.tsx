@@ -35,6 +35,8 @@ function LogInForm() {
 			body = { username, email, password };
 		}
 
+		console.log(`Body: ${JSON.stringify(body)}`);
+
 		console.log(`Calling ${endpoint}`);
 		
 		try {
@@ -48,7 +50,13 @@ function LogInForm() {
 			});
 
 			if (response.ok) {
-				const data = await response.json();
+				let data;
+				const contentType = response.headers.get("content-type");
+				if (contentType && contentType.indexOf("application/json") !== -1) {
+					data = await response.json();
+				} else {
+					data = await response.text();
+				}
 				console.log(`${action} successful:`, data);
 				setIsLoggedIn(true);
 				setView('landing');
