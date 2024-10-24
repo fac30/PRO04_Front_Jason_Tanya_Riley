@@ -1,14 +1,15 @@
 import { useContext } from 'react'
+import { useUser } from '../../context/User'
 import { StoreContext } from '../../context/Store';
 import { LogInIcon } from "lucide-react"
 
 function LogInButton() {
 	const { setView, view } = useContext(StoreContext);
+	const { isLoggedIn } = useUser();
 
 	const handleClick = (e: React.MouseEvent) => {
 		e.preventDefault();
-		console.log(`Current view before click:`, view);
-		console.log(`Login Button clicked`);
+		console.log(`Login Button clicked by ${isLoggedIn ? 'logged in' : 'logged out'} user`);
 		setView('login');
 	}
 
