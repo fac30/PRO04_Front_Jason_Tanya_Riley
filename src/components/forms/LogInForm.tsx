@@ -1,8 +1,11 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { StoreContext } from "../../context/Store";	
 import { useUser } from "../../context/User";
 
 function LogInForm() {
 	const { setIsLoggedIn } = useUser();
+	const { setView } = useContext(StoreContext);
+
 	const [action, setAction] = useState<'login' | 'signup'>("login");
 	const [email, setEmail] = useState<string>("");
 	const [password, setPassword] = useState<string>("");
@@ -14,7 +17,7 @@ function LogInForm() {
 			alert('Please fill in both email and password');
 			return;
 		}
-		
+
 		console.log(`Form submitted via ${action}`);
 		const server = 'localhost:3000/auth/';
 		const endpoint = ((action === 'login') ? 'log-in' : 'sign-up');
@@ -40,6 +43,11 @@ function LogInForm() {
 		// } catch (error) {
 		// 	console.error(`Error during ${action}:`, error);
 		// }
+		
+		alert(`${action} successful`);
+		// setIsLoggedIn(true);
+		setView('landing');
+		return;
 	}
 
 	return (
