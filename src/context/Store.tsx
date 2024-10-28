@@ -10,7 +10,7 @@ interface Product {
 	location: number;
 	orders: number;
 	reviews: number | null;
-  activities: number;
+  activity: number;
   price?: number;
 }
 

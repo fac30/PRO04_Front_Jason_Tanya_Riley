@@ -70,7 +70,7 @@ function LogInForm() {
 				console.error(`${action} failed:`, response.status, errorText);
 				alert(`${action} failed: ${errorText}`);
 			}
-		} catch (error) {
+		} catch (error: any) {
 			console.error(`Error during ${action}:`, error);
 			alert(`Error during ${action}: ${error.message}`);
 		}
