@@ -34,7 +34,7 @@ input {
 }
 
 .product-card {
-	@apply bg-accent-0 p-4 rounded-lg border border-accent-1 shadow-md shadow-accent-4/30 cursor-pointer
+	@apply bg-primary-3 p-4 rounded-lg border border-accent-1 shadow-md shadow-accent-4/30 cursor-pointer
 }
 
 .product-card-img {
