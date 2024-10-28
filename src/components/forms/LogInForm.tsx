@@ -52,20 +52,25 @@ function LogInForm() {
 			if (response.ok) {
 				let data;
 				const contentType = response.headers.get("content-type");
+				
 				if (contentType && contentType.indexOf("application/json") !== -1) {
 					data = await response.json();
 				} else {
 					data = await response.text();
 				}
+
 				console.log(`${action} successful:`, data);
+				alert(`${action} successful`);
+
 				setIsLoggedIn(true);
 				setView('landing');
+
 			} else {
 				const errorText = await response.text();
 				console.error(`${action} failed:`, response.status, errorText);
 				alert(`${action} failed: ${errorText}`);
 			}
-		} catch (error) {
+		} catch (error: any) {
 			console.error(`Error during ${action}:`, error);
 			alert(`Error during ${action}: ${error.message}`);
 		}
