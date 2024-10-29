@@ -38,6 +38,7 @@
 
 ## Project Structure
 
+```src
 PRO04 Front/
 ├── src/
 │ ├── components/
@@ -52,6 +53,7 @@ PRO04 Front/
 ├── tsconfig.node.json
 ├── vite.config.ts
 └── README.md
+```
 
 ## Scripts
 
