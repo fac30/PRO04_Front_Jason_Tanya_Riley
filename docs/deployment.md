@@ -34,7 +34,6 @@ npm run build
 - URL: `???.craftandgraft.com`
 - Automatically deployed from `main` branch
 
-
 ## Deployment Steps
 
 1. Merge your changes into the `main` branch
