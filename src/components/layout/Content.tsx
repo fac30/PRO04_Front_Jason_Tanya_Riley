@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { StoreContext } from '../../context/Store';
+import { useEnv } from '../../context/Environment';
 import { LandingView } from '../view/LandingView';
 import { SearchView } from '../view/SearchView';
 import { ProductView } from '../view/ProductView';
@@ -20,6 +21,7 @@ interface Product {
 }
 
 function Content() {
+	const { serverURL } = useEnv();
   const { view, searchTerm } = useContext(StoreContext);
   const [ products, setProducts ] = useState<Product[]>([]);
   const [ loading, setLoading ] = useState(true);
@@ -30,15 +32,18 @@ function Content() {
   const fetchProducts = async () => {
     try {
       setLoading(true);
-      const response = await fetch('https://crafts-crafts.onrender.com/products');
+			console.log(`Fetching products from ${serverURL}/products`);
+      
+			const response = await fetch(serverURL + '/products');
       if (!response.ok) {
-        throw new Error('Failed to fetch products');
-      }
-      const data = await response.json();
+				throw new Error('Failed to fetch products')
+			};
+      
+			const data = await response.json();
       setProducts(data);
       setLoading(false);
     } catch (err) {
-      setError('Failed to load products. Please try again later.');
+      setError(`${err}`);
       setLoading(false);
     }
   };

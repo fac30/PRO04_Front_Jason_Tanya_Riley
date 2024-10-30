@@ -1,6 +1,10 @@
+import { useEnv } from '../../src/context/Environment';
+
+const { serverURL } = useEnv();
+
 async function fetchProductById(id) {
 	try {
-		const response = await fetch(`https://crafts-crafts.onrender.com/products/${id}`);
+		const response = await fetch(`${serverURL}/products/${id}`);
 		if (!response.ok) {
 			throw new Error('Failed to fetch product');
 		}

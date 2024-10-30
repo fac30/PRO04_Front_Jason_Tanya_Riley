@@ -1,4 +1,5 @@
 import React, { createContext, useEffect, useState } from 'react';
+import { useEnv } from './Environment';
 
 interface Product {
   id: number;
@@ -36,6 +37,7 @@ export const StoreContext = createContext<StoreContextType>({
 
 export const StoreProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [view, setView] = useState('landing');
+	const { serverURL } = useEnv();
 	
 	const handleSetView = (newView: string) => {
 		console.log(`[${new Date().toISOString()}] Setting view to:`, newView);
@@ -47,7 +49,7 @@ export const StoreProvider: React.FC<{ children: React.ReactNode }> = ({ childre
 
   const fetchProductById = async (id: number) => {
     try {
-      const response = await fetch(`https://crafts-crafts.onrender.com/products/${id}`);
+      const response = await fetch(`${serverURL}/products/${id}`);
       if (!response.ok) {
         throw new Error('Failed to fetch product');
       }
