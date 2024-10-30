@@ -1,3 +1,9 @@
+/**
+ * ${1:Description placeholder}
+ *
+ * @param {number} id
+ * @returns {string}
+ */
 function activity(id: number): string {
 	let activity: string = "";
 

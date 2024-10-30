@@ -3,6 +3,11 @@ import { StoreContext } from '../../context/Store';
 import { useUser } from '../../context/User'
 import { LogOut } from "lucide-react"
 
+/**
+ * ${1:Description placeholder}
+ *
+ * @returns {${2:*}}
+ */
 function LogOutButton() {
 	const { setView } = useContext(StoreContext);
 	const { setIsLoggedIn } = useUser();

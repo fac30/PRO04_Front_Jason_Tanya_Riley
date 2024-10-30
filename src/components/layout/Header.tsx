@@ -2,6 +2,11 @@ import { useContext } from 'react';
 import  { StoreContext } from '../../context/Store';
 import UserButtonGroup from '../groups/UserButtonGroup'
 
+/**
+ * ${1:Description placeholder}
+ *
+ * @returns {${2:*}}
+ */
 function Header() {
 	const { setView } = useContext(StoreContext);
 

@@ -2,6 +2,12 @@ import { useContext, useEffect } from 'react';
 import { ArrowLeft, ShoppingBag } from 'lucide-react';
 import { StoreContext } from '../../context/Store';
 
+/**
+ * ${1:Description placeholder}
+ *
+ * @export
+ * @returns {${2:*}}
+ */
 export function ProductView() {
   const { setView, selectedProduct } = useContext(StoreContext);
 

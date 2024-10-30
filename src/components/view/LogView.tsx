@@ -2,6 +2,11 @@ import { LogViewQuantum } from '../quantum/LogViewQuantum';
 import { useContext } from 'react';
 import { useUser } from '../../context/User';
 
+/**
+ * ${1:Description placeholder}
+ *
+ * @returns {${2:*}}
+ */
 function LogView() {
 	const { isLoggedIn } = useUser();
 

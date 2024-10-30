@@ -2,6 +2,12 @@ import React, { useContext } from 'react';
 import { StoreContext } from '../../context/Store';
 import { useUser } from '../../context/User'
 
+/**
+ * ${1:Description placeholder}
+ *
+ * @export
+ * @returns {${2:*}}
+ */
 export function LandingView() {
   const { setView } = useContext(StoreContext);
 	const { isLoggedIn, setIsLoggedIn } = useUser();

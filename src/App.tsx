@@ -6,6 +6,11 @@ import { EnvironmentProvider } from './context/Environment';
 import { StoreProvider } from './context/Store';
 import { UserProvider } from './context/User';
 
+/**
+ * ${1:Description placeholder}
+ *
+ * @returns {${2:*}}
+ */
 function App() {
   return (
 		<EnvironmentProvider>

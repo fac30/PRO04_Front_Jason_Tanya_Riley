@@ -6,20 +6,86 @@ import { SearchView } from '../view/SearchView';
 import { ProductView } from '../view/ProductView';
 import { LogView } from '../view/LogView';
 
+/**
+ * ${1:Description placeholder}
+ *
+ * @interface Product
+ * @typedef {Product}
+ */
 interface Product {
-  id: number;
-  name: string;
-	photo_link: string;
-  strapline: string;
-  description: string;
-	stock_level: number;
-	location: number;
-	orders: number;
-	reviews: number | null;
-  activities: number;
-  price?: number;
+  /**
+ * ${1:Description placeholder}
+ *
+ * @type {number}
+ */
+id: number;
+  /**
+ * ${1:Description placeholder}
+ *
+ * @type {string}
+ */
+name: string;
+	/**
+ * ${1:Description placeholder}
+ *
+ * @type {string}
+ */
+photo_link: string;
+  /**
+ * ${1:Description placeholder}
+ *
+ * @type {string}
+ */
+strapline: string;
+  /**
+ * ${1:Description placeholder}
+ *
+ * @type {string}
+ */
+description: string;
+	/**
+ * ${1:Description placeholder}
+ *
+ * @type {number}
+ */
+stock_level: number;
+	/**
+ * ${1:Description placeholder}
+ *
+ * @type {number}
+ */
+location: number;
+	/**
+ * ${1:Description placeholder}
+ *
+ * @type {number}
+ */
+orders: number;
+	/**
+ * ${1:Description placeholder}
+ *
+ * @type {(number | null)}
+ */
+reviews: number | null;
+  /**
+ * ${1:Description placeholder}
+ *
+ * @type {number}
+ */
+activities: number;
+  /**
+ * ${1:Description placeholder}
+ *
+ * @type {?number}
+ */
+price?: number;
 }
 
+/**
+ * ${1:Description placeholder}
+ *
+ * @returns {${2:*}}
+ */
 function Content() {
 	const { serverURL } = useEnv();
   const { view, searchTerm } = useContext(StoreContext);

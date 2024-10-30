@@ -1,6 +1,11 @@
 import React from 'react'
 import { useUser } from '../../context/User'
 
+/**
+ * ${1:Description placeholder}
+ *
+ * @returns {${2:*}}
+ */
 function Footer() {
 	return (
     <footer className='bg-primary-2 w-full'>

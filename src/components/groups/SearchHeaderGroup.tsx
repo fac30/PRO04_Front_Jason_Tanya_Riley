@@ -5,6 +5,12 @@ import {
 } from 'lucide-react';
 import { StoreContext } from '../../context/Store';
 
+/**
+ * ${1:Description placeholder}
+ *
+ * @export
+ * @returns {${2:*}}
+ */
 export function SearchHeader() {
   const { setView, setSearchTerm } = useContext(StoreContext);
 

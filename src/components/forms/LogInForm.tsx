@@ -3,6 +3,11 @@ import { useEnv } from "../../context/Environment";
 import { StoreContext } from "../../context/Store";
 import { useUser } from "../../context/User";
 
+/**
+ * ${1:Description placeholder}
+ *
+ * @returns {${2:*}}
+ */
 function LogInForm() {
 	const { setIsLoggedIn } = useUser();
 	const { setView } = useContext(StoreContext);

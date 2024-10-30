@@ -3,6 +3,11 @@ import { useUser } from '../../context/User'
 import { StoreContext } from '../../context/Store';
 import { LogInIcon } from "lucide-react"
 
+/**
+ * ${1:Description placeholder}
+ *
+ * @returns {${2:*}}
+ */
 function LogInButton() {
 	const { setView, view } = useContext(StoreContext);
 	const { isLoggedIn } = useUser();

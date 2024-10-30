@@ -2,6 +2,11 @@ import { useContext } from 'react'
 import { StoreContext } from '../../context/Store';
 import { ShoppingBag } from "lucide-react";
 
+/**
+ * ${1:Description placeholder}
+ *
+ * @returns {${2:*}}
+ */
 function ShoppingBagButton() {
   const { setView } = useContext(StoreContext);
 
