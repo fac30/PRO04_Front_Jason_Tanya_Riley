@@ -20,7 +20,7 @@ function LogInForm() {
 
 		console.log(`Form submitted via ${action}`);
 
-		const server = 'http://localhost:3000/auth/';
+		const server = 'https://crafts-crafts.onrender.com/auth/';
 		const route = ((action === 'login') ? 'log-in' : 'sign-up');
 		const endpoint = `${server}${route}`;
 
