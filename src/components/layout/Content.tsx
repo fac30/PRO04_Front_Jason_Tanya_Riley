@@ -22,19 +22,19 @@ interface Product {
 
 function Content() {
 	const { serverURL } = useEnv();
+
   const { view, searchTerm } = useContext(StoreContext);
   const [ products, setProducts ] = useState<Product[]>([]);
   const [ loading, setLoading ] = useState(true);
   const [ error, setError ] = useState<string | null>(null);
 
-  useEffect(() => { fetchProducts(); }, []);
-
   const fetchProducts = async () => {
     try {
       setLoading(true);
-			console.log(`Fetching products from ${serverURL}/products`);
+			const endpoint = await (`${serverURL}` + '/products');
+			console.log(`Fetching products from ${endpoint}`);
       
-			const response = await fetch(serverURL + '/products');
+			const response = await fetch(endpoint);
       if (!response.ok) {
 				throw new Error('Failed to fetch products')
 			};
@@ -47,6 +47,11 @@ function Content() {
       setLoading(false);
     }
   };
+
+	useEffect(() => { 
+		console.log(`serverURL in Content: ${serverURL}`);
+		fetchProducts();
+	}, [serverURL]);
 
   const filteredProducts = products.filter(product =>
     product.name.toLowerCase().includes(searchTerm.toLowerCase())
