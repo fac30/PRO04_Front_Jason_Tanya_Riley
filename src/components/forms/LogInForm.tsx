@@ -1,11 +1,13 @@
 import { useState, useContext } from "react";
-import { StoreContext } from "../../context/Store";	
+import { useEnv } from "../../context/Environment";
+import { StoreContext } from "../../context/Store";
 import { useUser } from "../../context/User";
 
 function LogInForm() {
 	const { setIsLoggedIn } = useUser();
 	const { setView } = useContext(StoreContext);
-
+	const { serverURL } = useEnv();
+	
 	const [action, setAction] = useState<'login' | 'signup'>("login");
 	const [email, setEmail] = useState<string>("");
 	const [password, setPassword] = useState<string>("");
@@ -20,7 +22,7 @@ function LogInForm() {
 
 		console.log(`Form submitted via ${action}`);
 
-		const server = 'https://crafts-crafts.onrender.com/auth/';
+		const server = `${serverURL}/auth/`;
 		const route = ((action === 'login') ? 'log-in' : 'sign-up');
 		const endpoint = `${server}${route}`;
 
