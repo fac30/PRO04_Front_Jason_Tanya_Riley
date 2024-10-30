@@ -7,20 +7,23 @@ interface EnvironmentContextType {
 	setServerURL: (serverURL: string) => void;
 }
 
-const EnvironmentContext = createContext<EnvironmentContextType | undefined>(
-	undefined
-);
+const EnvironmentContext = createContext<EnvironmentContextType>({
+  isLocal: false,
+  setIsLocal: () => {},
+  serverURL: '',
+  setServerURL: () => {},
+});
 
 export const EnvironmentProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [isLocal, setIsLocal] = useState(false);
-	const [serverURL, setServerURL] = useState('Not Set');
+	const [serverURL, setServerURL] = useState('');
 
 	useEffect(() => {
     const runAt = window.location.hostname;
     const newIsLocal = runAt === 'localhost';
     setIsLocal(newIsLocal);
     
-    const useURL = newIsLocal ? 'http://localhost:3000' : 'https://crafts-crafts.onrender.com';
+    const useURL = (newIsLocal ? 'http://localhost:3000' : 'https://crafts-crafts.onrender.com');
     setServerURL(useURL);
   }, []);
 
