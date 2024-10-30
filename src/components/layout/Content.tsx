@@ -22,13 +22,13 @@ interface Product {
 
 function Content() {
 	const { serverURL } = useEnv();
-
   const { view, searchTerm } = useContext(StoreContext);
   const [ products, setProducts ] = useState<Product[]>([]);
   const [ loading, setLoading ] = useState(true);
   const [ error, setError ] = useState<string | null>(null);
 
   const fetchProducts = async () => {
+		await serverURL;
     try {
       setLoading(true);
 			const endpoint = await (`${serverURL}` + '/products');
@@ -50,7 +50,7 @@ function Content() {
 
 	useEffect(() => { 
 		console.log(`serverURL in Content: ${serverURL}`);
-		fetchProducts();
+		if (serverURL !== "") { fetchProducts() };
 	}, [serverURL]);
 
   const filteredProducts = products.filter(product =>
