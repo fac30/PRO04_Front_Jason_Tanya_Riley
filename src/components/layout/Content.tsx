@@ -30,7 +30,7 @@ function Content() {
   const fetchProducts = async () => {
     try {
       setLoading(true);
-      const response = await fetch('http://localhost:3000/products');
+      const response = await fetch('https://crafts-crafts.onrender.com/products');
       if (!response.ok) {
         throw new Error('Failed to fetch products');
       }

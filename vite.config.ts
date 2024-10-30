@@ -5,7 +5,7 @@ export default defineConfig({
   plugins: [react()],
   server: {
     proxy: {
-      '/api': 'http://localhost:3000' // Proxy API requests to your Express backend
+      '/api': 'https://crafts-crafts.onrender.com' // Proxy API requests to your Express backend
     }
   }
 })
