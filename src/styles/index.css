@@ -7,7 +7,8 @@ input {
 }
 
 .site-main {
-	@apply flex flex-col w-full h-fit bg-primary-A
+	@apply flex flex-col min-h-screen w-full bg-primary-A;
+	/* height: max(100vh, fit-content); */
 }
 
 /*--- Layout Debug Mode ---*/
