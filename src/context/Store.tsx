@@ -42,10 +42,6 @@ export const StoreProvider: React.FC<{ children: React.ReactNode }> = ({ childre
 		setView(newView);
 	};
 
-	useEffect(() => {
-		console.log(`[${new Date().toISOString()}] View changed to:`, view);
-	}, [view]);
-
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
 
