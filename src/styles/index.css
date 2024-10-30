@@ -7,7 +7,7 @@ input {
 }
 
 .site-main {
-	@apply flex flex-col w-full h-full bg-primary-A
+	@apply flex flex-col w-full h-fit bg-primary-A
 }
 
 /*--- Layout Debug Mode ---*/
