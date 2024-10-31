@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/dataDisplays/ProductGallery.tsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/dataDisplays/ProductGallery.tsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { useContext } from 'react';
+import { ShoppingBag } from 'lucide-react';
+import { StoreContext } from '../../context/Store';
+import { activity } from '../../dummy/activities';
+
+/**
+ * ${1:Description placeholder}
+ *
+ * @interface Product
+ * @typedef {Product}
+ */
+interface Product {
+  /**
+ * ${1:Description placeholder}
+ *
+ * @type {number}
+ */
+id: number;
+  /**
+ * ${1:Description placeholder}
+ *
+ * @type {string}
+ */
+name: string;
+	/**
+ * ${1:Description placeholder}
+ *
+ * @type {string}
+ */
+photo_link: string;
+  /**
+ * ${1:Description placeholder}
+ *
+ * @type {string}
+ */
+strapline: string;
+  /**
+ * ${1:Description placeholder}
+ *
+ * @type {string}
+ */
+description: string;
+	/**
+ * ${1:Description placeholder}
+ *
+ * @type {number}
+ */
+stock_level: number;
+	/**
+ * ${1:Description placeholder}
+ *
+ * @type {number}
+ */
+location: number;
+	/**
+ * ${1:Description placeholder}
+ *
+ * @type {number}
+ */
+orders: number;
+	/**
+ * ${1:Description placeholder}
+ *
+ * @type {(number | null)}
+ */
+reviews: number | null;
+  /**
+ * ${1:Description placeholder}
+ *
+ * @type {number}
+ */
+activities: number;
+  /**
+ * ${1:Description placeholder}
+ *
+ * @type {?number}
+ */
+price?: number;
+}
+
+/**
+ * ${1:Description placeholder}
+ *
+ * @export
+ * @param {{ products: Product[] }} param0
+ * @param {{}\} param0.products
+ * @returns {${2:*}\}
+ */
+export function ProductGallery({ products }: { products: Product[] }) {
+  const { setView, fetchProductById } = useContext(StoreContext);
+
+  const handleProductClick = async (productId: number) => {
+    await fetchProductById(productId);
+    setView('product');
+  };
+
+  return (
+    &lt;div className="grid grid-cols-2 gap-4">
+			{products &amp;&amp; products.length > 0 ? (
+				products.map((product: Product) => (
+					&lt;div key={product.id} className="product-card" onClick={ 
+						() => handleProductClick(product.id)
+					}>
+						&lt;div className="product-card-img">
+							&lt;ShoppingBag className="h-12 w-12 text-gray-400" />
+						&lt;/div>
+						
+						&lt;div>
+							&lt;div>
+								&lt;p className="font-semibold text-center">
+									{product.name}
+								&lt;/p>
+							&lt;/div>
+
+							&lt;hr />
+
+							&lt;div>
+								&lt;p className="text-sm text-gray-600 text-center">
+									{product.strapline}
+								&lt;/p>
+							&lt;/div>
+							
+							&lt;hr />
+
+							&lt;div className='flex justify-between'>
+								&lt;p className="text-sm italic text-gray-600">
+									{activity(product.activities)}
+								&lt;/p>
+
+								&lt;p className="text-sm text-gray-600">
+									{product.reviews === null ? "No Reviews" : "Error"}
+								&lt;/p>
+							&lt;/div>
+						&lt;/div>
+
+						&lt;p className="mt-2 font-bold">
+							£{product.price?.toFixed(2) || '9.99'}
+						&lt;/p>
+					&lt;/div>
+				))
+			) : (
+				&lt;p>No products found.&lt;/p>
+			)}
+		&lt;/div>
+  );
+}</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#App">App</a></li><li><a href="global.html#CartButtonQuantum">CartButtonQuantum</a></li><li><a href="global.html#Content">Content</a></li><li><a href="global.html#EnvironmentContext">EnvironmentContext</a></li><li><a href="global.html#EnvironmentProvider">EnvironmentProvider</a></li><li><a href="global.html#Footer">Footer</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#LandingView">LandingView</a></li><li><a href="global.html#LogButtonQuantum">LogButtonQuantum</a></li><li><a href="global.html#LogInButton">LogInButton</a></li><li><a href="global.html#LogInForm">LogInForm</a></li><li><a href="global.html#LogOutButton">LogOutButton</a></li><li><a href="global.html#LogView">LogView</a></li><li><a href="global.html#LogViewQuantum">LogViewQuantum</a></li><li><a href="global.html#LoggedInText">LoggedInText</a></li><li><a href="global.html#ProductGallery">ProductGallery</a></li><li><a href="global.html#ProductView">ProductView</a></li><li><a href="global.html#SearchHeader">SearchHeader</a></li><li><a href="global.html#SearchView">SearchView</a></li><li><a href="global.html#ShoppingBagButton">ShoppingBagButton</a></li><li><a href="global.html#StoreContext">StoreContext</a></li><li><a href="global.html#StoreProvider">StoreProvider</a></li><li><a href="global.html#UserButtonBar">UserButtonBar</a></li><li><a href="global.html#UserContext">UserContext</a></li><li><a href="global.html#UserProvider">UserProvider</a></li><li><a href="global.html#activity">activity</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.4</a> on Wed Oct 30 2024 18:10:35 GMT+0000 (Greenwich Mean Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

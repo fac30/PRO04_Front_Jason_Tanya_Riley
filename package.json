@@ -9,6 +9,7 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "start:dev": "nodemon --exec tsx src/main.tsx",
+		"docs": "jsdoc -c jsdoc.config.json",
     "try:product": "node scratch/call/product1.js",
     "try:products": "node scratch/call/productAll.js"
   },
@@ -18,12 +19,17 @@
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.26.0",
+    "@babel/preset-env": "^7.26.0",
+    "@babel/preset-react": "^7.25.9",
+    "@babel/preset-typescript": "^7.26.0",
     "@tailwindcss/typography": "^0.5.15",
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
     "@vitejs/plugin-react": "^3.1.0",
     "autoprefixer": "^10.4.20",
     "jsdoc": "^4.0.4",
+    "jsdoc-babel": "^0.5.0",
     "netlify-cli": "^17.37.1",
     "nodemon": "^2.0.22",
     "postcss": "^8.4.47",

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/layout/Content.tsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/layout/Content.tsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { useContext, useEffect, useState } from 'react';
+import { StoreContext } from '../../context/Store';
+import { useEnv } from '../../context/Environment';
+import { LandingView } from '../view/LandingView';
+import { SearchView } from '../view/SearchView';
+import { ProductView } from '../view/ProductView';
+import { LogView } from '../view/LogView';
+
+/**
+ * ${1:Description placeholder}
+ *
+ * @interface Product
+ * @typedef {Product}
+ */
+interface Product {
+  /**
+ * ${1:Description placeholder}
+ *
+ * @type {number}
+ */
+id: number;
+  /**
+ * ${1:Description placeholder}
+ *
+ * @type {string}
+ */
+name: string;
+	/**
+ * ${1:Description placeholder}
+ *
+ * @type {string}
+ */
+photo_link: string;
+  /**
+ * ${1:Description placeholder}
+ *
+ * @type {string}
+ */
+strapline: string;
+  /**
+ * ${1:Description placeholder}
+ *
+ * @type {string}
+ */
+description: string;
+	/**
+ * ${1:Description placeholder}
+ *
+ * @type {number}
+ */
+stock_level: number;
+	/**
+ * ${1:Description placeholder}
+ *
+ * @type {number}
+ */
+location: number;
+	/**
+ * ${1:Description placeholder}
+ *
+ * @type {number}
+ */
+orders: number;
+	/**
+ * ${1:Description placeholder}
+ *
+ * @type {(number | null)}
+ */
+reviews: number | null;
+  /**
+ * ${1:Description placeholder}
+ *
+ * @type {number}
+ */
+activities: number;
+  /**
+ * ${1:Description placeholder}
+ *
+ * @type {?number}
+ */
+price?: number;
+}
+
+/**
+ * ${1:Description placeholder}
+ *
+ * @returns {${2:*}}
+ */
+function Content() {
+	const { serverURL } = useEnv();
+  const { view, searchTerm } = useContext(StoreContext);
+  const [ products, setProducts ] = useState&lt;Product[]>([]);
+  const [ loading, setLoading ] = useState(true);
+  const [ error, setError ] = useState&lt;string | null>(null);
+
+  const fetchProducts = async () => {
+		await serverURL;
+    try {
+      setLoading(true);
+			const endpoint = await (`${serverURL}` + '/products');
+			console.log(`Fetching products from ${endpoint}`);
+      
+			const response = await fetch(endpoint);
+      if (!response.ok) {
+				throw new Error('Failed to fetch products')
+			};
+      
+			const data = await response.json();
+      setProducts(data);
+      setLoading(false);
+    } catch (err) {
+      setError(`${err}`);
+      setLoading(false);
+    }
+  };
+
+	useEffect(() => { 
+		console.log(`serverURL in Content: ${serverURL}`);
+		if (serverURL !== "") { fetchProducts() };
+	}, [serverURL]);
+
+  const filteredProducts = products.filter(product =>
+    product.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  if (loading) {
+    return &lt;div>Loading...&lt;/div>;
+  }
+
+  if (error) {
+    return &lt;div>{error}&lt;/div>;
+  }
+
+	{console.log(`Calling return on Content: ${view}`)}
+
+  return (
+    &lt;main className="site-main">
+      &lt;div id="view-holder" className='container w-full mx-auto px-4 py-8 flex-1'>
+        {view === 'landing' &amp;&amp; &lt;LandingView />}
+        {view === 'search' &amp;&amp; &lt;SearchView products={filteredProducts} />}
+        {view === 'product' &amp;&amp; &lt;ProductView />}
+				{view === 'login' &amp;&amp; &lt;LogView /> }
+      &lt;/div>
+    &lt;/main>
+  );
+}
+
+export default Content;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#App">App</a></li><li><a href="global.html#CartButtonQuantum">CartButtonQuantum</a></li><li><a href="global.html#Content">Content</a></li><li><a href="global.html#EnvironmentContext">EnvironmentContext</a></li><li><a href="global.html#EnvironmentProvider">EnvironmentProvider</a></li><li><a href="global.html#Footer">Footer</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#LandingView">LandingView</a></li><li><a href="global.html#LogButtonQuantum">LogButtonQuantum</a></li><li><a href="global.html#LogInButton">LogInButton</a></li><li><a href="global.html#LogInForm">LogInForm</a></li><li><a href="global.html#LogOutButton">LogOutButton</a></li><li><a href="global.html#LogView">LogView</a></li><li><a href="global.html#LogViewQuantum">LogViewQuantum</a></li><li><a href="global.html#LoggedInText">LoggedInText</a></li><li><a href="global.html#ProductGallery">ProductGallery</a></li><li><a href="global.html#ProductView">ProductView</a></li><li><a href="global.html#SearchHeader">SearchHeader</a></li><li><a href="global.html#SearchView">SearchView</a></li><li><a href="global.html#ShoppingBagButton">ShoppingBagButton</a></li><li><a href="global.html#StoreContext">StoreContext</a></li><li><a href="global.html#StoreProvider">StoreProvider</a></li><li><a href="global.html#UserButtonBar">UserButtonBar</a></li><li><a href="global.html#UserContext">UserContext</a></li><li><a href="global.html#UserProvider">UserProvider</a></li><li><a href="global.html#activity">activity</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.4</a> on Wed Oct 30 2024 18:10:35 GMT+0000 (Greenwich Mean Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

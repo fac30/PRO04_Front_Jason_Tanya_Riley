@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: context/Store.tsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: context/Store.tsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { createContext, useEffect, useState } from 'react';
+import { useEnv } from './Environment';
+
+/**
+ * ${1:Description placeholder}
+ *
+ * @interface Product
+ * @typedef {Product}
+ */
+interface Product {
+  /**
+ * ${1:Description placeholder}
+ *
+ * @type {number}
+ */
+id: number;
+  /**
+ * ${1:Description placeholder}
+ *
+ * @type {string}
+ */
+name: string;
+	/**
+ * ${1:Description placeholder}
+ *
+ * @type {string}
+ */
+photo_link: string;
+  /**
+ * ${1:Description placeholder}
+ *
+ * @type {string}
+ */
+strapline: string;
+  /**
+ * ${1:Description placeholder}
+ *
+ * @type {string}
+ */
+description: string;
+	/**
+ * ${1:Description placeholder}
+ *
+ * @type {number}
+ */
+stock_level: number;
+	/**
+ * ${1:Description placeholder}
+ *
+ * @type {number}
+ */
+location: number;
+	/**
+ * ${1:Description placeholder}
+ *
+ * @type {number}
+ */
+orders: number;
+	/**
+ * ${1:Description placeholder}
+ *
+ * @type {(number | null)}
+ */
+reviews: number | null;
+  /**
+ * ${1:Description placeholder}
+ *
+ * @type {number}
+ */
+activity: number;
+  /**
+ * ${1:Description placeholder}
+ *
+ * @type {?number}
+ */
+price?: number;
+}
+
+/**
+ * ${1:Description placeholder}
+ *
+ * @interface StoreContextType
+ * @typedef {StoreContextType}
+ */
+interface StoreContextType {
+  /**
+ * ${1:Description placeholder}
+ *
+ * @type {string}
+ */
+view: string;
+  /**
+ * ${1:Description placeholder}
+ *
+ * @type {(view: string) => void}
+ */
+setView: (view: string) => void;
+  /**
+ * ${1:Description placeholder}
+ *
+ * @type {(Product | null)}
+ */
+selectedProduct: Product | null;
+  /**
+ * ${1:Description placeholder}
+ *
+ * @type {(product: Product | null) => void}
+ */
+setSelectedProduct: (product: Product | null) => void;
+  /**
+ * ${1:Description placeholder}
+ *
+ * @type {string}
+ */
+searchTerm: string;
+  /**
+ * ${1:Description placeholder}
+ *
+ * @type {(term: string) => void}
+ */
+setSearchTerm: (term: string) => void;
+  /**
+ * ${1:Description placeholder}
+ *
+ * @type {(id: number) => Promise&lt;void>}
+ */
+fetchProductById: (id: number) => Promise&lt;void>;
+}
+
+/**
+ * ${1:Description placeholder}
+ *
+ * @type {${2:*}}
+ */
+export const StoreContext = createContext&lt;StoreContextType>({
+  view: 'landing',
+  setView: () => {},
+  selectedProduct: null,
+  setSelectedProduct: () => {},
+  searchTerm: '',
+  setSearchTerm: () => {},
+  fetchProductById: async () => {},
+});
+
+/**
+ * ${1:Description placeholder}
+ *
+ * @param {{ children: any; }} param0
+ * @param {${2:*}} param0.children
+ * @returns {${3:*}\}
+ */
+export const StoreProvider: React.FC&lt;{ children: React.ReactNode }> = ({ children }) => {
+  const [view, setView] = useState('landing');
+	const { serverURL } = useEnv();
+	
+	const handleSetView = (newView: string) => {
+		console.log(`[${new Date().toISOString()}] Setting view to:`, newView);
+		setView(newView);
+	};
+
+  const [selectedProduct, setSelectedProduct] = useState&lt;Product | null>(null);
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const fetchProductById = async (id: number) => {
+    try {
+      const response = await fetch(`${serverURL}/products/${id}`);
+      if (!response.ok) {
+        throw new Error('Failed to fetch product');
+      }
+      const product = await response.json();
+      setSelectedProduct(product);
+    } catch (error) {
+      console.error('Error fetching product:', error);
+      setSelectedProduct(null);
+    }
+  };
+
+  return (
+    &lt;StoreContext.Provider value={{ 
+      view, 
+      setView: handleSetView, 
+      selectedProduct, 
+      setSelectedProduct, 
+      searchTerm, 
+      setSearchTerm,
+      fetchProductById
+    }}>
+      {children}
+    &lt;/StoreContext.Provider>
+  );
+};
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#App">App</a></li><li><a href="global.html#CartButtonQuantum">CartButtonQuantum</a></li><li><a href="global.html#Content">Content</a></li><li><a href="global.html#EnvironmentContext">EnvironmentContext</a></li><li><a href="global.html#EnvironmentProvider">EnvironmentProvider</a></li><li><a href="global.html#Footer">Footer</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#LandingView">LandingView</a></li><li><a href="global.html#LogButtonQuantum">LogButtonQuantum</a></li><li><a href="global.html#LogInButton">LogInButton</a></li><li><a href="global.html#LogInForm">LogInForm</a></li><li><a href="global.html#LogOutButton">LogOutButton</a></li><li><a href="global.html#LogView">LogView</a></li><li><a href="global.html#LogViewQuantum">LogViewQuantum</a></li><li><a href="global.html#LoggedInText">LoggedInText</a></li><li><a href="global.html#ProductGallery">ProductGallery</a></li><li><a href="global.html#ProductView">ProductView</a></li><li><a href="global.html#SearchHeader">SearchHeader</a></li><li><a href="global.html#SearchView">SearchView</a></li><li><a href="global.html#ShoppingBagButton">ShoppingBagButton</a></li><li><a href="global.html#StoreContext">StoreContext</a></li><li><a href="global.html#StoreProvider">StoreProvider</a></li><li><a href="global.html#UserButtonBar">UserButtonBar</a></li><li><a href="global.html#UserContext">UserContext</a></li><li><a href="global.html#UserProvider">UserProvider</a></li><li><a href="global.html#activity">activity</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.4</a> on Wed Oct 30 2024 18:10:35 GMT+0000 (Greenwich Mean Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
