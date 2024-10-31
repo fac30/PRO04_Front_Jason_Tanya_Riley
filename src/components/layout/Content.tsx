@@ -32,7 +32,7 @@ function Content() {
     try {
       setLoading(true);
 			const endpoint = await (`${serverURL}` + '/products');
-			console.log(`Fetching products from ${endpoint}`);
+			console.log(`Content • fetchProducts • Fetching products from ${endpoint}`);
       
 			const response = await fetch(endpoint);
       if (!response.ok) {
@@ -49,7 +49,7 @@ function Content() {
   };
 
 	useEffect(() => { 
-		console.log(`serverURL in Content: ${serverURL}`);
+		console.log(`Content • useEffect([serverURL]) • serverURL in Content: ${serverURL}`);
 		if (serverURL !== "") { fetchProducts() };
 	}, [serverURL]);
 
@@ -65,7 +65,7 @@ function Content() {
     return <div>{error}</div>;
   }
 
-	{console.log(`Calling return on Content: ${view}`)}
+	{console.log(`Content • returning ${view}`)}
 
   return (
     <main className="site-main">

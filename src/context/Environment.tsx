@@ -28,7 +28,7 @@ export const EnvironmentProvider: React.FC<{ children: ReactNode }> = ({ childre
   }, []);
 
 	useEffect(() => {
-		console.log('serverURL updated to:', serverURL);
+		console.log('Environment Provider • useEffect([serverURL]) serverURL updated to:', serverURL);
 	}, [serverURL]);
 
   return (
