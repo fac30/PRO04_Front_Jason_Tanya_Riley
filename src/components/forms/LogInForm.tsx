@@ -4,9 +4,9 @@ import { StoreContext } from "../../context/Store";
 import { useUser } from "../../context/User";
 
 function LogInForm() {
-	const { setIsLoggedIn } = useUser();
-	const { setView } = useContext(StoreContext);
 	const { serverURL } = useEnv();
+	const { setView } = useContext(StoreContext);
+	const { setIsLoggedIn, setUserName, setUserEmail } = useUser();
 	
 	const [action, setAction] = useState<'login' | 'signup'>("login");
 	const [email, setEmail] = useState<string>("");
@@ -24,24 +24,31 @@ function LogInForm() {
 		console.log(`Form submitted via ${action}`);
 
 		const server = `${serverURL}/auth/`;
-		const route = ((action === 'login') ? 'log-in' : 'sign-up');
-		const endpoint = `${server}${route}`;
+		let route/*  = ((action === 'login') ? 'log-in' : 'sign-up') */;
 
 		const username = email.match(/^([^@]+)/)?.[1] || '';
-		console.log(`Email: ${email}`);
-		console.log(`Username: ${username}`);
+		console.log(`Deriving: ${email} ==> ${username}`);
 
 		let body;
-		if (action === 'login') {
-			body = { email, password };
-		} else {
-			body = { username, email, password };
+		switch (action) {
+			case 'login':
+				route = 'log-in';
+				body = { email, password };
+				break;
+			case 'signup':
+				route = 'sign-up';
+				body = { username, email, password };
+				break;
 		}
+		const endpoint = `${server}${route}`;
 
+		console.groupCollapsed(`Request Details`);
+		console.log(`Action: ${action}`);
 		console.log(`Body: ${JSON.stringify(body)}`);
+		console.log(`Endpoint: ${endpoint}`);
+		console.groupEnd();
 
-		console.log(`Calling ${endpoint}`);
-		
+		console.group(`Calling ${endpoint}`);
 		try {
 			const response = await fetch(endpoint, {
 				method: 'POST',
@@ -62,12 +69,23 @@ function LogInForm() {
 					data = await response.text();
 				}
 
-				console.log(`${action} successful:`, data);
-				alert(`${action} successful`);
-
-				setIsLoggedIn(true);
-				setView('landing');
-
+				switch (action) {
+					case 'login':
+						console.log(`${action} successful:`, data);
+						alert(`${action} successful`);
+						console.groupCollapsed(`Server Response`);
+						console.log(response);
+						console.groupEnd();
+						
+						setIsLoggedIn(true);
+						setUserName(username);
+						setUserEmail(email);
+						setView('landing');
+						break;
+					case 'signup':
+						console.log(`${action} successful:`, data);
+						break;
+				}
 			} else {
 				const errorText = await response.text();
 				console.error(`${action} failed:`, response.status, errorText);
@@ -77,13 +95,16 @@ function LogInForm() {
 			console.error(`Error during ${action}:`, error);
 			alert(`Error during ${action}: ${error.message}`);
 		}
-		
-		console.groupEnd();
+		console.groupEnd(); // endpoint
+		console.groupEnd(); // handleSubmit
 	}
 
 	return (
-		<form onSubmit={handleSubmit}
-			className="border-2 border-primary-1"
+		<div className="prose">
+			<h2>Log In</h2>
+
+			<form onSubmit={handleSubmit}
+				className="border-2 border-primary-1"
 		>
 			<div id="input-container"
 				className="flex flex-col"
@@ -116,8 +137,9 @@ function LogInForm() {
 					Sign Up
 				</button>
 			</div>
-		</form>
-	)
+			</form>
+		</div>
+	);
 }
 
 export { LogInForm };
