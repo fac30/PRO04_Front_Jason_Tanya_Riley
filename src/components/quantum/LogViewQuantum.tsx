@@ -5,8 +5,7 @@ import { LogInForm } from '../forms/LogInForm';
 function LogViewQuantum() {
 	const { isLoggedIn } = useUser();
 
-	console.log(`LogViewQuantum called`);
-	console.log(`isLoggedIn: ${isLoggedIn}`);
+	console.log(`LogViewQuantum • isLoggedIn: ${isLoggedIn}`);
 
 	return (
 		isLoggedIn ? <LoggedInText /> : < LogInForm />

@@ -13,6 +13,7 @@ function LogInForm() {
 	const [password, setPassword] = useState<string>("");
 
 	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+		console.groupCollapsed(`Login Form Submit Handler`);
 		e.preventDefault();
 
 		if (!email || !password) {
@@ -76,6 +77,8 @@ function LogInForm() {
 			console.error(`Error during ${action}:`, error);
 			alert(`Error during ${action}: ${error.message}`);
 		}
+		
+		console.groupEnd();
 	}
 
 	return (

@@ -40,7 +40,7 @@ export const StoreProvider: React.FC<{ children: React.ReactNode }> = ({ childre
 	const { serverURL } = useEnv();
 	
 	const handleSetView = (newView: string) => {
-		console.log(`[${new Date().toISOString()}] Setting view to:`, newView);
+		console.log(`StoreProvider handleSetView • Setting view to:`, newView);
 		setView(newView);
 	};
 

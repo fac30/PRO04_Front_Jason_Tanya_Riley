@@ -5,8 +5,7 @@ import { useUser } from '../../context/User';
 function LogView() {
 	const { isLoggedIn } = useUser();
 
-	console.log(`LogView called`);
-	console.log(`isLoggedIn: ${isLoggedIn}`);
+	console.log(`LogView • isLoggedIn: ${isLoggedIn}`);
 
   return (
     <section>
