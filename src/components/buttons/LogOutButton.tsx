@@ -7,19 +7,56 @@ import { LogOut } from "lucide-react"
 function LogOutButton() {
 	const { serverURL } = useEnv();
 	const { setView } = useContext(StoreContext);
-	const { isLoggedIn, setIsLoggedIn } = useUser();
+	const { isLoggedIn, setIsLoggedIn, userName, setUserName, userEmail, setUserEmail } = useUser();
 
-	function handleLogOut(e: React.MouseEvent<HTMLButtonElement>) {
+	async function handleLogOut(e: React.MouseEvent<HTMLButtonElement>) {
 		e.preventDefault();
-		
+
+
+
 		switch (isLoggedIn) {
 			case true:
-				setIsLoggedIn(false);
-				alert('Logged Out');
-				setView('landing');
+				const body = { userEmail, userName };
+				try {
+					const response = await fetch(`${serverURL}/auth/log-out`, {
+						method: 'POST',
+						headers: { 
+							'Content-Type': 'application/json'
+						},
+						credentials: 'include',
+						body: JSON.stringify(body)
+					});
+
+					if (response.ok) {
+						let data;
+						const contentType = response.headers.get("content-type");
+						
+						if (contentType && contentType.indexOf("application/json") !== -1) {
+							data = await response.json();
+						} else {
+							data = await response.text();
+						}
+						
+						setIsLoggedIn(false);
+						setUserEmail('');
+						setUserName('');
+
+						alert('Logged Out');
+						setView('landing');
+					} else {
+						const errorText = await response.text();
+						console.error(`Logout failed:`, response.status, errorText);
+						alert(`$Logout failed: ${errorText}`);
+					}
+				} catch (error) {
+					console.error('Error logging out:', error);
+					alert(`Error logging out`);
+				}
 				break;
 			default:
-				alert('Not Logged In. Please refresh your browser.');
+				alert(
+					'Not Logged In. Please refresh your browser.'
+				);
 				break;
 		}
 	}
